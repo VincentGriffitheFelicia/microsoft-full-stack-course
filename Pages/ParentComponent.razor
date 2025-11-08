@@ -1,0 +1,16 @@
+@page "/parent";
+
+<ChildComponent @ref="childRef" />
+
+<button @onclick="UpdateChild">Update Child</button>
+
+@code
+{
+    private ChildComponent childRef;
+
+    private void UpdateChild()
+    {
+        Console.WriteLine("Hello");
+        childRef.UpdateState();
+    }
+}
