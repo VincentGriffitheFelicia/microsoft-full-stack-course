@@ -1,0 +1,14 @@
+<div>
+    <p>Child Component State: @ChildState</p>
+</div>
+
+@code
+{
+    private string ChildState = "Initial State";
+
+    public void UpdateState()
+    {
+        ChildState = "Updated State";
+        StateHasChanged();
+    }
+}
