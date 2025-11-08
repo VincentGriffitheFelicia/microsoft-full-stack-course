@@ -1,14 +1,14 @@
-<div>
-    <p>Child Component State: @ChildState</p>
-</div>
+<button @onclick="NotifyParent">Notify Parent</button>
 
-@code
-{
-    private string ChildState = "Initial State";
+@code {
+    [Parameter]
+    public EventCallback OnNotifyParent { get; set; }
 
-    public void UpdateState()
-    {
-        ChildState = "Updated State";
-        StateHasChanged();
-    }
+    private async Task NotifyParent()
+    {
+        if (OnNotifyParent.HasDelegate)
+        {
+            await OnNotifyParent.InvokeAsync();
+        }
+    }
 }

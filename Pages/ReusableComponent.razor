@@ -1,0 +1,11 @@
+<ChildComponent @ref="childComponent" OnNotifyParent="HandleNotification" />
+
+@code {
+    private ChildComponent childComponent;
+
+    private void HandleNotification()
+    {
+        // Logic to handle notifications from the child component
+        Console.WriteLine("Notification received from child component");
+    }
+}

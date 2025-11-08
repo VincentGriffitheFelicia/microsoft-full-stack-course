@@ -1,21 +1,23 @@
 ﻿@inherits LayoutComponentBase
 
 <CascadingValue Value="ThemeColor">
-    @Body
+    <div class="page">
+        <div class="sidebar">
+            <NavMenu />
+        </div>
+
+        <main>
+            <div class="top-row px-4">
+                <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            </div>
+
+            <article class="content px-4">
+                @Body
+            </article>
+        </main>
+    </div>
 </CascadingValue>
 
-<select @onchange="ChangeTheme">
-    <option value="blue">Blue</option>
-    <option value="green">Green</option>
-    <option value="red">Red</option>
-</select>
-
-
 @code {
-
-    private string ThemeColor = "blue";
-
-    private void ChangeTheme(ChangeEventArgs? e) {
-        ThemeColor = e?.Value?.ToString() ?? ThemeColor;
-    }
+    private string ThemeColor = "lightblue";
 }
