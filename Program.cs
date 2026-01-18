@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Course_Repository;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.Services.AddSignalR();
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
