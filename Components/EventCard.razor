@@ -1,0 +1,29 @@
+@namespace MyApp.Components
+@using Microsoft.AspNetCore.Components
+
+<div class="event-card">
+    <div class="event-card-content">
+        <div class="event-card-header">
+            <h4>@Event.Name</h4>
+            <div class="event-date">@Event.Date.ToString("MMM d, yyyy")</div>
+        </div>
+        <div class="event-location">@Event.Location</div>
+        <p class="event-desc">@Event.Description</p>
+        <div class="event-actions">
+            <input class="form-control name-edit" value="@Event.Name" @onchange="OnNameChanged" />
+            <button class="btn btn-outline-primary" @onclick="()=>OnViewDetails.InvokeAsync(Event.Id)">View Details</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventModel Event { get; set; } = new EventModel();
+    [Parameter] public EventCallback<EventModel> EventChanged { get; set; }
+    [Parameter] public EventCallback<int> OnViewDetails { get; set; }
+
+    private async System.Threading.Tasks.Task OnNameChanged(ChangeEventArgs e)
+    {
+        Event.Name = e?.Value?.ToString() ?? Event.Name;
+        if (EventChanged.HasDelegate) await EventChanged.InvokeAsync(Event);
+    }
+}

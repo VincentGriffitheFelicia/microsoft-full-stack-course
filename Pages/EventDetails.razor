@@ -1,0 +1,62 @@
+@page "/events/{Id:int}"
+@inject NavigationManager NavigationManager
+
+<h3>Event Details</h3>
+
+@if (evt == null)
+{
+    <p>Event not found.</p>
+}
+else
+{
+    <div class="details">
+        <label>Name</label>
+        <input class="form-control" @bind="evt.Name" />
+
+        <label>Date</label>
+        <input type="date" class="form-control" value="@dateString" @onchange="UpdateDateFromInput" />
+
+        <label>Location</label>
+        <input class="form-control" @bind="evt.Location" />
+
+        <label>Description</label>
+        <textarea class="form-control" @bind="evt.Description"></textarea>
+
+        <div class="mt-2">
+            <button class="btn btn-primary" @onclick="Save">Save</button>
+            <button class="btn btn-outline-secondary" @onclick="GoRegister">Register</button>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+    private EventModel? evt;
+    private string dateString = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        evt = EventService.GetById(Id);
+        if (evt != null) dateString = evt.Date.ToString("yyyy-MM-dd");
+    }
+
+    private void UpdateDateFromInput(ChangeEventArgs e)
+    {
+        if (evt == null) return;
+        if (DateTime.TryParse(e?.Value?.ToString(), out var d))
+        {
+            evt.Date = d;
+        }
+    }
+
+    private void Save()
+    {
+        if (evt != null) EventService.Update(evt);
+        NavigationManager.NavigateTo("/events");
+    }
+
+    private void GoRegister()
+    {
+        if (evt != null) NavigationManager.NavigateTo($"/register/{evt.Id}");
+    }
+}

@@ -1,0 +1,36 @@
+@page "/register/{Id:int}"
+@inject NavigationManager NavigationManager
+
+<h3>Register</h3>
+
+@if (evt == null)
+{
+    <p>Event not found.</p>
+}
+else
+{
+    <div>
+        <p><strong>@evt.Name</strong> — @evt.Date.ToString("MMM d, yyyy") &middot; @evt.Location</p>
+        <input class="form-control" placeholder="Your name" @bind="attendeeName" />
+        <input class="form-control mt-2" placeholder="Your email" @bind="attendeeEmail" />
+        <button class="btn btn-success mt-2" @onclick="Submit">Submit Registration</button>
+    </div>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+    private EventModel? evt;
+    private string attendeeName = string.Empty;
+    private string attendeeEmail = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        evt = EventService.GetById(Id);
+    }
+
+    private void Submit()
+    {
+        // Mock submit; in a real app you'd post to a server
+        NavigationManager.NavigateTo("/events");
+    }
+}

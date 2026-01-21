@@ -1,0 +1,33 @@
+@page "/events"
+@using System.Collections.Generic
+@using MyApp.Components
+@inject NavigationManager NavigationManager
+
+<h3>Events</h3>
+
+<div class="events-grid">
+@for (int i = 0; i < events.Count; i++)
+    {
+        <EventCard Event="events[i]" EventChanged="@((EventModel e) => OnEventChanged(i, e))" OnViewDetails="NavigateToDetails" />
+    }
+</div>
+
+@code {
+    private List<EventModel> events = new List<EventModel>();
+
+    protected override void OnInitialized()
+    {
+        events = new List<EventModel>(EventService.GetAll());
+    }
+
+    private void NavigateToDetails(int id)
+    {
+        NavigationManager.NavigateTo($"/events/{id}");
+    }
+
+    private void OnEventChanged(int index, EventModel updated)
+    {
+        events[index] = updated;
+        EventService.Update(updated);
+    }
+}
