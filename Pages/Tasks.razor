@@ -1,0 +1,82 @@
+@page "/tasks"
+@using TaskManagerApp.Services
+@using TaskManagerApp.Models
+@using Microsoft.AspNetCore.Components.Web;
+
+@inject TaskService TaskService
+
+<PageTitle>Tasks</PageTitle>
+
+<h3>Task Manager</h3>
+
+<!-- Add Task Form -->
+<div class="mb-3">
+    <input @bind="newTask.Name" placeholder="Task Name" class="form-control mb-2" />
+    <input @bind="newTask.Description" placeholder="Description" class="form-control mb-2" />
+    <button @onclick="AddTask" class="btn btn-primary">Add Task</button>
+</div>
+
+<!-- Task List -->
+@if (tasks.Any())
+{
+    <ul class="list-group">
+        @foreach (var task in tasks)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>@task.Name</strong> - @task.Description
+                    <span class="badge @(task.IsCompleted ? "bg-success" : "bg-warning")">@(task.IsCompleted ? "Completed" : "Pending")</span>
+                </div>
+                <div>
+                    @if (!task.IsCompleted)
+                    {
+                        <button @onclick="() => CompleteTask(task.Id)" class="btn btn-success btn-sm me-2">Complete</button>
+                    }
+                    <button @onclick="() => DeleteTask(task.Id)" class="btn btn-danger btn-sm">Delete</button>
+                </div>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No tasks yet. Add one above!</p>
+}
+
+@code {
+    private List<TaskManagerApp.Models.Task> tasks = new();
+    private TaskManagerApp.Models.Task newTask = new();
+
+    protected override void OnInitialized()
+    {
+        LoadTasks();
+    }
+
+    private void LoadTasks()
+    {
+        tasks = TaskService.GetTasks();
+        StateHasChanged();
+    }
+
+    private void AddTask()
+    {
+        if (!string.IsNullOrWhiteSpace(newTask.Name))
+        {
+            TaskService.AddTask(newTask);
+            newTask = new TaskManagerApp.Models.Task();
+            LoadTasks();
+        }
+    }
+
+    private void DeleteTask(int id)
+    {
+        TaskService.DeleteTask(id);
+        LoadTasks();
+    }
+
+    private void CompleteTask(int id)
+    {
+        TaskService.CompleteTask(id);
+        LoadTasks();
+    }
+}
