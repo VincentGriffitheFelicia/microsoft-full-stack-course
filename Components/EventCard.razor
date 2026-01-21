@@ -10,7 +10,7 @@
         <div class="event-location">@Event.Location</div>
         <p class="event-desc">@Event.Description</p>
         <div class="event-actions">
-            <input class="form-control name-edit" value="@Event.Name" @onchange="OnNameChanged" />
+            <input class="form-control name-edit" value="@Event.Name" @onchange="OnNameChanged" placeholder="Event name" />
             <button class="btn btn-outline-primary" @onclick="()=>OnViewDetails.InvokeAsync(Event.Id)">View Details</button>
         </div>
     </div>
@@ -23,7 +23,11 @@
 
     private async System.Threading.Tasks.Task OnNameChanged(ChangeEventArgs e)
     {
-        Event.Name = e?.Value?.ToString() ?? Event.Name;
-        if (EventChanged.HasDelegate) await EventChanged.InvokeAsync(Event);
+        var newName = e?.Value?.ToString()?.Trim() ?? string.Empty;
+        if (!string.IsNullOrWhiteSpace(newName))
+        {
+            Event.Name = newName;
+            if (EventChanged.HasDelegate) await EventChanged.InvokeAsync(Event);
+        }
     }
 }

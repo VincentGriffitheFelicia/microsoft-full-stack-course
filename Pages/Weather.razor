@@ -11,6 +11,10 @@
 {
     <p><em>Loading...</em></p>
 }
+else if (forecasts.Length == 0)
+{
+    <p><em>No weather data available.</em></p>
+}
 else
 {
     <table class="table">
@@ -29,7 +33,7 @@ else
                     <td>@forecast.Date.ToShortDateString()</td>
                     <td>@forecast.TemperatureC</td>
                     <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
+                    <td>@(forecast.Summary ?? "N/A")</td>
                 </tr>
             }
         </tbody>
@@ -41,7 +45,15 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        try
+        {
+            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        }
+        catch
+        {
+            // In a real app, log the error
+            forecasts = Array.Empty<WeatherForecast>();
+        }
     }
 
     public class WeatherForecast

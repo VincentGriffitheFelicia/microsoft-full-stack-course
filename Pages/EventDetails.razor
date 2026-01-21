@@ -12,18 +12,34 @@ else
     <div class="details">
         <label>Name</label>
         <input class="form-control" @bind="evt.Name" />
+        @if (string.IsNullOrWhiteSpace(evt.Name))
+        {
+            <div class="text-danger">Name is required.</div>
+        }
 
         <label>Date</label>
         <input type="date" class="form-control" value="@dateString" @onchange="UpdateDateFromInput" />
+        @if (evt.Date == default)
+        {
+            <div class="text-danger">Please select a valid date.</div>
+        }
 
         <label>Location</label>
         <input class="form-control" @bind="evt.Location" />
+        @if (string.IsNullOrWhiteSpace(evt.Location))
+        {
+            <div class="text-danger">Location is required.</div>
+        }
 
         <label>Description</label>
         <textarea class="form-control" @bind="evt.Description"></textarea>
+        @if (string.IsNullOrWhiteSpace(evt.Description))
+        {
+            <div class="text-danger">Description is required.</div>
+        }
 
         <div class="mt-2">
-            <button class="btn btn-primary" @onclick="Save">Save</button>
+            <button class="btn btn-primary" @onclick="Save" disabled="@(!IsFormValid())">Save</button>
             <button class="btn btn-outline-secondary" @onclick="GoRegister">Register</button>
         </div>
     </div>
@@ -49,10 +65,28 @@ else
         }
     }
 
+    private bool IsFormValid()
+    {
+        return evt != null &&
+               !string.IsNullOrWhiteSpace(evt.Name) &&
+               evt.Date != default &&
+               !string.IsNullOrWhiteSpace(evt.Location) &&
+               !string.IsNullOrWhiteSpace(evt.Description);
+    }
+
     private void Save()
     {
-        if (evt != null) EventService.Update(evt);
-        NavigationManager.NavigateTo("/events");
+        if (!IsFormValid()) return;
+        try
+        {
+            if (evt != null) EventService.Update(evt);
+            NavigationManager.NavigateTo("/events");
+        }
+        catch (Exception ex)
+        {
+            // In a real app, show error message
+            Console.WriteLine($"Error saving event: {ex.Message}");
+        }
     }
 
     private void GoRegister()

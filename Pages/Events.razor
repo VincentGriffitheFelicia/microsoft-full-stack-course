@@ -27,7 +27,14 @@
 
     private void OnEventChanged(int index, EventModel updated)
     {
-        events[index] = updated;
-        EventService.Update(updated);
+        try
+        {
+            events[index] = updated;
+            EventService.Update(updated);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error updating event: {ex.Message}");
+        }
     }
 }

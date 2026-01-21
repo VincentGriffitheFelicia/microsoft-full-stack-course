@@ -14,7 +14,16 @@ public static class EventService
     public static EventModel? GetById(int id) => _events.Find(e => e.Id == id);
     public static void Update(EventModel evt)
     {
+        if (evt == null) throw new ArgumentNullException(nameof(evt));
         var idx = _events.FindIndex(x => x.Id == evt.Id);
-        if (idx >= 0) _events[idx] = evt;
+        if (idx >= 0)
+        {
+            _events[idx] = evt;
+        }
+        else
+        {
+            // In a real app, throw or add new
+            throw new InvalidOperationException("Event not found for update.");
+        }
     }
 }
