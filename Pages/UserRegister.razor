@@ -1,0 +1,37 @@
+@page "/user-register"
+@inject NavigationManager NavigationManager
+@using System.ComponentModel.DataAnnotations
+
+<h3>User Registration</h3>
+
+<EditForm Model="@user" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <InputText id="name" @bind-Value="user.Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <InputText id="email" @bind-Value="user.Email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <InputText id="password" @bind-Value="user.Password" type="password" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</EditForm>
+
+@code {
+    private UserModel user = new UserModel();
+
+    private void HandleValidSubmit()
+    {
+        UserService.Add(user);
+        NavigationManager.NavigateTo("/login");
+    }
+}

@@ -1,0 +1,44 @@
+@inject HttpClient Http
+@inject ILogger<HybridComponent> Logger
+
+<h3>Hybrid Rendering Component</h3>
+
+@if(Data == null)
+{
+    <p>Loading...</p>
+} else
+{
+    <ul>
+        @foreach(var item in Data)
+        {
+            <li>@item</li>
+        }
+    </ul>
+}
+
+
+@code {
+    private List<string>? Data;
+    protected override async Task OnInitializedAsync()
+    {
+        Logger?.LogInformation("Fetching data...");
+        Data = new List<string> { "Test Data 1", "Test Data 2", "Test Data 3" };
+        Logger?.LogInformation("Data fetch completed.");
+    }
+}
+@* 
+<button @onclick="LoadComponent">Load Hybrid Component</button>
+
+@if(IsComponentLoaded)
+{
+    <HybridComponent />
+}
+
+@code {
+    private bool IsComponentLoaded = false;
+
+    private void LoadComponent()
+    {
+        IsComponentLoaded = true;
+    }
+} *@

@@ -1,0 +1,55 @@
+@page "/login"
+@inject NavigationManager NavigationManager
+@using System.ComponentModel.DataAnnotations
+
+<h3>Login</h3>
+
+@if (errorMessage != null)
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+
+<EditForm Model="@loginModel" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <InputText id="email" @bind-Value="loginModel.Email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <InputText id="password" @bind-Value="loginModel.Password" type="password" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+</EditForm>
+
+@code {
+    private LoginModel loginModel = new LoginModel();
+    private string? errorMessage;
+
+    private void HandleValidSubmit()
+    {
+        if (UserService.ValidateLogin(loginModel.Email, loginModel.Password))
+        {
+            var user = UserService.GetByEmail(loginModel.Email);
+            SessionService.Login(user!);
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            errorMessage = "Invalid email or password.";
+        }
+    }
+
+    public class LoginModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+        [Required]
+        public string Password { get; set; } = string.Empty;
+    }
+}

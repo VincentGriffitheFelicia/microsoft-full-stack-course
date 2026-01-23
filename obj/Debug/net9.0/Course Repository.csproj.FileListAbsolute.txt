@@ -1075,10 +1075,10 @@ C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Cour
 C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\ref\Course Repository.dll
 C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\compressed\6y377n8dhc-2k0ke2nrzz.gz
 C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\compressed\1u28hcs2bu-2k0ke2nrzz.gz
-C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\wwwroot\_framework\Course Repository.tawb4yxow7.wasm
-C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\wwwroot\_framework\Course Repository.xilghbl38n.pdb
-C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\wwwroot\_framework\Course Repository.tawb4yxow7.wasm.gz
-C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\wwwroot\_framework\Course Repository.xilghbl38n.pdb.gz
-C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\compressed\u8k7ljzkvw-tawb4yxow7.gz
-C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\compressed\same6bmfvu-xilghbl38n.gz
-C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\compressed\w1s56161lv-n3qimbdo7p.gz
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\wwwroot\_framework\Course Repository.1zy9nad01p.wasm
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\wwwroot\_framework\Course Repository.g2130u8qrr.pdb
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\wwwroot\_framework\Course Repository.1zy9nad01p.wasm.gz
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\wwwroot\_framework\Course Repository.g2130u8qrr.pdb.gz
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\compressed\u8k7ljzkvw-1zy9nad01p.gz
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\compressed\same6bmfvu-g2130u8qrr.gz
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\compressed\w1s56161lv-1s0pfva4t9.gz

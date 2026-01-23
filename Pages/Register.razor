@@ -1,9 +1,14 @@
 @page "/register/{Id:int}"
 @inject NavigationManager NavigationManager
 
-<h3>Register</h3>
+<h3>Register for Event</h3>
 
-@if (evt == null)
+@if (!SessionService.IsLoggedIn)
+{
+    <p>You must be logged in to register for events.</p>
+    <a href="/login" class="btn btn-primary">Login</a>
+}
+else if (evt == null)
 {
     <p>Event not found.</p>
 }
@@ -11,57 +16,29 @@ else
 {
     <div>
         <p><strong>@evt.Name</strong> — @evt.Date.ToString("MMM d, yyyy") &middot; @evt.Location</p>
-        <input class="form-control" placeholder="Your name" @bind="attendeeName" />
-        @if (string.IsNullOrWhiteSpace(attendeeName))
-        {
-            <div class="text-danger">Name is required.</div>
-        }
-        <input class="form-control mt-2" placeholder="Your email" @bind="attendeeEmail" />
-        @if (string.IsNullOrWhiteSpace(attendeeEmail))
-        {
-            <div class="text-danger">Email is required.</div>
-        }
-        else if (!IsValidEmail(attendeeEmail))
-        {
-            <div class="text-danger">Please enter a valid email address.</div>
-        }
-        <button class="btn btn-success mt-2" @onclick="Submit" disabled="@(!IsFormValid())">Submit Registration</button>
+        <p>Registering as: @SessionService.CurrentUser!.Name (@SessionService.CurrentUser.Email)</p>
+        <button class="btn btn-success" @onclick="Submit">Register</button>
     </div>
 }
 
 @code {
     [Parameter] public int Id { get; set; }
     private EventModel? evt;
-    private string attendeeName = string.Empty;
-    private string attendeeEmail = string.Empty;
 
     protected override void OnInitialized()
     {
         evt = EventService.GetById(Id);
     }
 
-    private bool IsValidEmail(string email)
-    {
-        try
-        {
-            var addr = new System.Net.Mail.MailAddress(email);
-            return addr.Address == email;
-        }
-        catch
-        {
-            return false;
-        }
-    }
-
-    private bool IsFormValid()
-    {
-        return !string.IsNullOrWhiteSpace(attendeeName) && !string.IsNullOrWhiteSpace(attendeeEmail) && IsValidEmail(attendeeEmail);
-    }
-
     private void Submit()
     {
-        if (!IsFormValid()) return;
-        // Mock submit; in a real app you'd post to a server
+        if (!SessionService.IsLoggedIn || evt == null) return;
+        var attendance = new AttendanceModel
+        {
+            UserId = SessionService.CurrentUser!.Id,
+            EventId = evt.Id
+        };
+        AttendanceService.Add(attendance);
         NavigationManager.NavigateTo("/events");
     }
 }

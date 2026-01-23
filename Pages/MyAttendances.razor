@@ -1,0 +1,52 @@
+@page "/my-attendances"
+@inject NavigationManager NavigationManager
+
+<h3>My Event Attendances</h3>
+
+@if (!SessionService.IsLoggedIn)
+{
+    <p>You must be logged in to view your attendances.</p>
+    <a href="/login" class="btn btn-primary">Login</a>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Registered At</th>
+                <th>Attended</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var attendance in attendances)
+            {
+                var evt = EventService.GetById(attendance.EventId);
+                if (evt != null)
+                {
+                    <tr>
+                        <td>@evt.Name</td>
+                        <td>@evt.Date.ToString("MMM d, yyyy")</td>
+                        <td>@evt.Location</td>
+                        <td>@attendance.RegisteredAt.ToString("MMM d, yyyy HH:mm")</td>
+                        <td>@(attendance.Attended ? "Yes" : "No")</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IReadOnlyList<AttendanceModel> attendances = new List<AttendanceModel>();
+
+    protected override void OnInitialized()
+    {
+        if (SessionService.IsLoggedIn)
+        {
+            attendances = AttendanceService.GetByUserId(SessionService.CurrentUser!.Id);
+        }
+    }
+}

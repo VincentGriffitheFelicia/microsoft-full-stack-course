@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Course Repository",
   "resources": {
-    "hash": "sha256-b4rath9RdaKs0X4SzrjcjLbdlmQGbAnQYk4XoBsVKPo=",
+    "hash": "sha256-b/9AddM5RCqW2yK3U0yNwNOVPfD1LfZEM1XFTZW4jIY=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.z6jo10m0rd.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.65wbz7t8mt.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -201,8 +201,8 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "Course Repository.tawb4yxow7.wasm": "Course Repository.wasm",
-      "Course Repository.xilghbl38n.pdb": "Course Repository.pdb"
+      "Course Repository.1zy9nad01p.wasm": "Course Repository.wasm",
+      "Course Repository.g2130u8qrr.pdb": "Course Repository.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.9ih887ebfz.js": "sha256-oS7IRiQoVt9ThQ7Y2UM3XoeY0JqPD02cg9IvRdufn2w="
@@ -412,10 +412,10 @@
       "WindowsBase.vy2l5u79y6.wasm": "sha256-ufB9Mo5joMyUs3DzXWWBFFIZNEVrt6h9N5stYB6Oln4=",
       "mscorlib.xd6mv31d55.wasm": "sha256-1YSLR2eZt3ceALFV//vZUF2AloxVil3VlrW1zZYPSEI=",
       "netstandard.kaml52uspo.wasm": "sha256-HLEwBpLfzKw2/zGSVzHzFJxznCkt/WIjahrziiMrOpA=",
-      "Course Repository.tawb4yxow7.wasm": "sha256-uyvUfvDTsr+ERa5k4ULxPJnhFjq4BC5EL4/14VV64PE="
+      "Course Repository.1zy9nad01p.wasm": "sha256-TchHH973X75ZdoNvOxTgfnOikWXj9gp05R4sIkxVWag="
     },
     "pdb": {
-      "Course Repository.xilghbl38n.pdb": "sha256-+Z2fDeDwDqRY4msaSBXokFyqFnwekUBaEEZsjRxg8Ho="
+      "Course Repository.g2130u8qrr.pdb": "sha256-KGBzF92IjJ9Yt/YuKYFuw02oigtQlXpbErXj8H3Czxw="
     }
   },
   "cacheBootResources": true,
