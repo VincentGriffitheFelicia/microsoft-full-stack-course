@@ -1,0 +1,8 @@
+Adding a nuget package:
+dotnet add package Newtonsoft.Json
+
+Updating a package version:
+dotnet add package Newtonsoft.Json --version 13.0.3
+
+Remove a package:
+dotnet remove package Newtonsoft.Json
