@@ -1,0 +1,38 @@
+2026-01-25 10:56:04.412 +08:00 [INF] Now listening on: http://localhost:5000
+2026-01-25 10:56:04.453 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-25 10:56:04.455 +08:00 [INF] Hosting environment: Development
+2026-01-25 10:56:04.457 +08:00 [INF] Content root path: C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository
+2026-01-25 10:56:10.411 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/errorhandling/division?numerator=10&denominator=0 - null null
+2026-01-25 10:56:10.492 +08:00 [WRN] Failed to determine the https port for redirect.
+2026-01-25 10:56:10.504 +08:00 [INF] Executing endpoint 'ErrorHandlingController.GetDivisionResult (Course Repository)'
+2026-01-25 10:56:10.550 +08:00 [INF] Route matched with {action = "GetDivisionResult", controller = "ErrorHandling"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDivisionResult(Int32, Int32) on controller ErrorHandlingController (Course Repository).
+2026-01-25 10:56:10.626 +08:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2026-01-25 10:56:10.642 +08:00 [INF] Executed action ErrorHandlingController.GetDivisionResult (Course Repository) in 78.8563ms
+2026-01-25 10:56:10.675 +08:00 [INF] Executed endpoint 'ErrorHandlingController.GetDivisionResult (Course Repository)'
+2026-01-25 10:56:10.687 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/errorhandling/division?numerator=10&denominator=0 - 400 null text/plain; charset=utf-8 279.9672ms
+2026-01-25 10:57:25.219 +08:00 [INF] Application is shutting down...
+2026-01-25 10:57:32.337 +08:00 [INF] Now listening on: http://localhost:5000
+2026-01-25 10:57:32.427 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-25 10:57:32.431 +08:00 [INF] Hosting environment: Development
+2026-01-25 10:57:32.433 +08:00 [INF] Content root path: C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository
+2026-01-25 10:57:35.518 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/errorhandling/division?numerator=10&denominator=0 - null null
+2026-01-25 10:57:35.567 +08:00 [WRN] Failed to determine the https port for redirect.
+2026-01-25 10:57:35.571 +08:00 [INF] Executing endpoint 'ErrorHandlingController.GetDivisionResult (Course Repository)'
+2026-01-25 10:57:35.615 +08:00 [INF] Route matched with {action = "GetDivisionResult", controller = "ErrorHandling"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDivisionResult(Int32, Int32) on controller ErrorHandlingController (Course Repository).
+2026-01-25 10:57:35.663 +08:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2026-01-25 10:57:35.677 +08:00 [INF] Executed action ErrorHandlingController.GetDivisionResult (Course Repository) in 53.2703ms
+2026-01-25 10:57:35.705 +08:00 [INF] Executed endpoint 'ErrorHandlingController.GetDivisionResult (Course Repository)'
+2026-01-25 10:57:35.722 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/errorhandling/division?numerator=10&denominator=0 - 400 null text/plain; charset=utf-8 206.1914ms
+2026-01-25 11:00:54.345 +08:00 [INF] Application is shutting down...
+2026-01-25 11:01:01.535 +08:00 [INF] Now listening on: http://localhost:5000
+2026-01-25 11:01:01.581 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-25 11:01:01.583 +08:00 [INF] Hosting environment: Development
+2026-01-25 11:01:01.583 +08:00 [INF] Content root path: C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository
+2026-01-25 11:01:07.173 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/errorhandling/division?numerator=10&denominator=0 - null null
+2026-01-25 11:01:07.241 +08:00 [WRN] Failed to determine the https port for redirect.
+2026-01-25 11:01:07.254 +08:00 [INF] Executing endpoint 'ErrorHandlingController.GetDivisionResult (Course Repository)'
+2026-01-25 11:01:07.296 +08:00 [INF] Route matched with {action = "GetDivisionResult", controller = "ErrorHandling"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDivisionResult(Int32, Int32) on controller ErrorHandlingController (Course Repository).
+2026-01-25 11:01:07.334 +08:00 [INF] Executed action ErrorHandlingController.GetDivisionResult (Course Repository) in 27.0491ms
+2026-01-25 11:01:07.367 +08:00 [INF] Executed endpoint 'ErrorHandlingController.GetDivisionResult (Course Repository)'
+2026-01-25 11:01:07.374 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/errorhandling/division?numerator=10&denominator=0 - 500 null null 206.3827ms
+2026-01-25 11:26:05.215 +08:00 [INF] Application is shutting down...
