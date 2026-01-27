@@ -1,0 +1,33 @@
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\appsettings.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Course Repository.staticwebassets.endpoints.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Course Repository.exe
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Course Repository.deps.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Course Repository.runtimeconfig.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Course Repository.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Course Repository.pdb
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Microsoft.OpenApi.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.csproj.AssemblyReference.cache
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.AssemblyInfoInputs.cache
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.AssemblyInfo.cs
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.csproj.CoreCompileInputs.cache
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.sourcelink.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\scopedcss\bundle\Course Repository.styles.css
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course R.319F6AED.Up2Date
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\refint\Course Repository.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.pdb
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.genruntimeconfig.cache
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\ref\Course Repository.dll

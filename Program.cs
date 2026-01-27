@@ -1,41 +1,58 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// Add a service for logging
+builder.Services.AddHttpLogging((logging) =>
+{
+    logging.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All;
+    logging.RequestBodyLogLimit = 4096;
+    logging.RequestBodyLogLimit = 4096;
+});
+
+// Add a service for authentication
+builder.Services.AddAuthentication();
+
+// Add a service for authorization
+builder.Services.AddAuthorization();
+
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseExceptionHandler("Home/Error");
+}
+else
+{
+    app.UseDeveloperExceptionPage();
 }
 
-app.UseHttpsRedirection();
+// Authentication middleware
+app.UseAuthentication();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+// Authorization middleware
+app.UseAuthorization();
 
-app.MapGet("/weatherforecast", () =>
+// Http logging middleware
+app.UseHttpLogging();
+
+app.MapGet("/", () => "Hello, ASP.NET Core Middleware");
+
+app.Use(async (context, next) =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+    Console.WriteLine($"Request Path: {context.Request.Path}");
+    await next();
+    Console.WriteLine($"Response Status Code: {context.Response.StatusCode}");
+});
+
+app.Use(async (context, next) =>
+{
+    var startTime = DateTime.UtcNow;
+    Console.WriteLine($"Start time: {startTime}");
+    await next();
+    var duration = DateTime.UtcNow - startTime;
+    Console.WriteLine($"Response time: {duration}");
+});
+
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
