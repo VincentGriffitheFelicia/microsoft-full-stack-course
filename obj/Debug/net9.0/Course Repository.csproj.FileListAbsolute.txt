@@ -13,3 +13,19 @@ C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Cour
 C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.pdb
 C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.genruntimeconfig.cache
 C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\ref\Course Repository.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Fluid.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Namotion.Reflection.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\NJsonSchema.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\NJsonSchema.Annotations.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\NJsonSchema.CodeGeneration.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\NJsonSchema.CodeGeneration.CSharp.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\NSwag.CodeGeneration.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\NSwag.CodeGeneration.CSharp.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\NSwag.Core.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\Parlot.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\bin\Debug\net9.0\TimeZoneConverter.dll
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course Repository.csproj.AssemblyReference.cache
+C:\Users\Griffithe\Desktop\My Files\Programming\Microsoft Full Stack Course\Course Repository\obj\Debug\net9.0\Course R.319F6AED.Up2Date
