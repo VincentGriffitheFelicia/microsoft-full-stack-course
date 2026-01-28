@@ -7,4 +7,11 @@
     <RootNamespace>Course_Repository</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+  </ItemGroup>
+
 </Project>
