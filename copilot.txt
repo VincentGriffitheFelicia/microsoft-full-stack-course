@@ -1,0 +1,16 @@
+I created a complete CRUD user management API with 4 new files:
+
+User Model - Defines user properties (Id, FirstName, LastName, Email, PhoneNumber, CreatedAt, UpdatedAt)
+
+UserService - In-memory service handling all CRUD operations with auto-incrementing IDs
+
+UsersController - REST API with 5 endpoints:
+
+GET all users
+GET user by ID
+POST create user
+PUT update user
+DELETE user
+Program.cs - Configured dependency injection, added controllers, Swagger documentation, and CORS support
+
+The API uses in-memory storage, returns proper HTTP status codes, includes error handling, and is ready to run with Swagger UI at /swagger for testing.

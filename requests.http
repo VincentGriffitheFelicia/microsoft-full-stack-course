@@ -1,0 +1,52 @@
+@baseUrl = http://localhost:5235
+
+### Get all users
+GET {{baseUrl}}/api/users
+
+### Get user by ID
+GET {{baseUrl}}/api/users/10
+
+### Create a new user
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "email": "jane.doe@example.com",
+  "phoneNumber": "+1-555-0123"
+}
+
+### Create another user
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "email": "jane.smith@example.com",
+  "phoneNumber": "+1-555-0456"
+}
+
+### Update user (ID: 1)
+PUT {{baseUrl}}/api/users/1
+Content-Type: application/json
+
+{
+  "firstName": "Jonathan",
+  "lastName": "Doe",
+  "email": "jonathan.doe@example.com",
+  "phoneNumber": "+1-555-0789"
+}
+
+### Delete user (ID: 2)
+DELETE {{baseUrl}}/api/users/2
+
+### Get all users after operations
+GET {{baseUrl}}/api/users
+
+### Not thread safe
+GET {{baseUrl}}/not-thread-safe
+
+### Thread safe
+GET {{baseUrl}}/thread-safe
