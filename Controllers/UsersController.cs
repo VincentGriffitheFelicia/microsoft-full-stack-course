@@ -9,10 +9,12 @@ namespace Course_Repository.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly ILogger<UsersController> _logger;
 
-        public UsersController(IUserService userService)
+        public UsersController(IUserService userService, ILogger<UsersController> logger)
         {
             _userService = userService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -22,8 +24,16 @@ namespace Course_Repository.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
         {
-            var users = await _userService.GetAllUsersAsync();
-            return Ok(users);
+            try
+            {
+                var users = await _userService.GetAllUsersAsync();
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving users");
+                return StatusCode(500, new { message = "An error occurred while retrieving users", error = ex.Message });
+            }
         }
 
         /// <summary>
@@ -34,11 +44,27 @@ namespace Course_Repository.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserById(int id)
         {
-            var user = await _userService.GetUserByIdAsync(id);
-            if (user == null)
-                return NotFound(new { message = $"User with ID {id} not found" });
+            try
+            {
+                // Validate ID
+                if (id <= 0)
+                {
+                    _logger.LogInformation("Log: User ID must be greater than 0");
+                    return BadRequest(new { message = "User ID must be greater than 0" });
+                }
+                    
 
-            return Ok(user);
+                var user = await _userService.GetUserByIdAsync(id);
+                if (user == null)
+                    return NotFound(new { message = $"User with ID {id} not found" });
+
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error retrieving user with ID {id}");
+                return StatusCode(500, new { message = "An error occurred while retrieving the user", error = ex.Message });
+            }
         }
 
         /// <summary>
@@ -47,13 +73,28 @@ namespace Course_Repository.Controllers
         /// <param name="user">User object to create</param>
         /// <returns>Created user object</returns>
         [HttpPost]
-        public async Task<ActionResult<User>> CreateUser([FromBody] User user)
+        public async Task<ActionResult<User>> CreateUser([FromBody] User? user)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            try
+            {
+                // Null check
+                if (user == null)
+                    return BadRequest(new { message = "User object cannot be null" });
 
-            var createdUser = await _userService.CreateUserAsync(user);
-            return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var (success, createdUser, errorMessage) = await _userService.CreateUserAsync(user);
+                if (!success)
+                    return BadRequest(new { message = errorMessage });
+
+                return CreatedAtAction(nameof(GetUserById), new { id = createdUser?.Id }, createdUser);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating user");
+                return StatusCode(500, new { message = "An error occurred while creating the user", error = ex.Message });
+            }
         }
 
         /// <summary>
@@ -63,16 +104,32 @@ namespace Course_Repository.Controllers
         /// <param name="user">Updated user data</param>
         /// <returns>Updated user object</returns>
         [HttpPut("{id}")]
-        public async Task<ActionResult<User>> UpdateUser(int id, [FromBody] User user)
+        public async Task<ActionResult<User>> UpdateUser(int id, [FromBody] User? user)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            try
+            {
+                // Validate ID
+                if (id <= 0)
+                    return BadRequest(new { message = "User ID must be greater than 0" });
 
-            var updatedUser = await _userService.UpdateUserAsync(id, user);
-            if (updatedUser == null)
-                return NotFound(new { message = $"User with ID {id} not found" });
+                // Null check
+                if (user == null)
+                    return BadRequest(new { message = "User object cannot be null" });
 
-            return Ok(updatedUser);
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var (success, updatedUser, errorMessage) = await _userService.UpdateUserAsync(id, user);
+                if (!success)
+                    return NotFound(new { message = errorMessage });
+
+                return Ok(updatedUser);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error updating user with ID {id}");
+                return StatusCode(500, new { message = "An error occurred while updating the user", error = ex.Message });
+            }
         }
 
         /// <summary>
@@ -83,11 +140,23 @@ namespace Course_Repository.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var result = await _userService.DeleteUserAsync(id);
-            if (!result)
-                return NotFound(new { message = $"User with ID {id} not found" });
+            try
+            {
+                // Validate ID
+                if (id <= 0)
+                    return BadRequest(new { message = "User ID must be greater than 0" });
 
-            return NoContent();
+                var (success, errorMessage) = await _userService.DeleteUserAsync(id);
+                if (!success)
+                    return NotFound(new { message = errorMessage });
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error deleting user with ID {id}");
+                return StatusCode(500, new { message = "An error occurred while deleting the user", error = ex.Message });
+            }
         }
     }
 }

@@ -6,8 +6,8 @@ namespace Course_Repository.Services
     {
         Task<IEnumerable<User>> GetAllUsersAsync();
         Task<User?> GetUserByIdAsync(int id);
-        Task<User> CreateUserAsync(User user);
-        Task<User?> UpdateUserAsync(int id, User user);
-        Task<bool> DeleteUserAsync(int id);
+        Task<(bool Success, User? User, string ErrorMessage)> CreateUserAsync(User user);
+        Task<(bool Success, User? User, string ErrorMessage)> UpdateUserAsync(int id, User user);
+        Task<(bool Success, string ErrorMessage)> DeleteUserAsync(int id);
     }
 }

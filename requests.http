@@ -4,7 +4,7 @@
 GET {{baseUrl}}/api/users
 
 ### Get user by ID
-GET {{baseUrl}}/api/users/10
+GET {{baseUrl}}/api/users/0
 
 ### Create a new user
 POST {{baseUrl}}/api/users
@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 
 ### Update user (ID: 1)
-PUT {{baseUrl}}/api/users/1
+PUT {{baseUrl}}/api/users/0
 Content-Type: application/json
 
 {
