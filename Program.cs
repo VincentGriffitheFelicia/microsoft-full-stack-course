@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using Course_Repository.Services;
+using Course_Repository.Middleware;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +28,16 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+// Configure middleware in correct order:
+// 1. Exception Handling (first - catches all exceptions)
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+// 2. Authentication (next - validates tokens)
+app.UseMiddleware<AuthenticationMiddleware>();
+
+// 3. Logging (last - logs all requests/responses after other middleware)
+app.UseMiddleware<RequestLoggingMiddleware>();
 
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())

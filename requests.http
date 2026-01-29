@@ -1,25 +1,60 @@
 @baseUrl = http://localhost:5235
+@validToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
-### Get all users
+### =============================================================
+### MIDDLEWARE TESTING - PUBLIC ENDPOINTS (NO AUTH REQUIRED)
+### =============================================================
+
+### 1. Test Public Root Endpoint (No Auth Required)
+GET {{baseUrl}}/
+
+### =============================================================
+### AUTHENTICATION TESTS
+### =============================================================
+
+### 2. Test Missing Authorization Header (Should Fail - 401)
 GET {{baseUrl}}/api/users
 
-### Get user by ID
-GET {{baseUrl}}/api/users/0
+### 3. Test Invalid Authorization Scheme (Should Fail - 401)
+GET {{baseUrl}}/api/users
+Authorization: InvalidScheme sometoken
 
-### Create a new user
+### 4. Test Invalid Token (Too Short - Should Fail - 401)
+GET {{baseUrl}}/api/users
+Authorization: Bearer short
+
+### 5. Test Valid Token (Should Succeed - 200)
+GET {{baseUrl}}/api/users
+Authorization: Bearer {{validToken}}
+
+### =============================================================
+### CRUD OPERATIONS WITH VALID TOKEN
+### =============================================================
+
+### 6. Create User with Valid Token
 POST {{baseUrl}}/api/users
 Content-Type: application/json
+Authorization: Bearer {{validToken}}
 
 {
-  "firstName": "Jane",
+  "firstName": "John",
   "lastName": "Doe",
-  "email": "jane.doe@example.com",
+  "email": "john.doe2@example.com",
   "phoneNumber": "+1-555-0123"
 }
 
-### Create another user
-POST {{baseUrl}}/api/users
+### 7. Get All Users with Valid Token
+GET {{baseUrl}}/api/users
+Authorization: Bearer {{validToken}}
+
+### 8. Get User by ID with Valid Token
+GET {{baseUrl}}/api/users/1
+Authorization: Bearer {{validToken}}
+
+### 9. Update User with Valid Token
+PUT {{baseUrl}}/api/users/1
 Content-Type: application/json
+Authorization: Bearer {{validToken}}
 
 {
   "firstName": "Jane",
@@ -28,25 +63,96 @@ Content-Type: application/json
   "phoneNumber": "+1-555-0456"
 }
 
-### Update user (ID: 1)
-PUT {{baseUrl}}/api/users/0
+### 10. Create Second User with Valid Token
+POST {{baseUrl}}/api/users
 Content-Type: application/json
+Authorization: Bearer {{validToken}}
 
 {
-  "firstName": "Jonathan",
-  "lastName": "Doe",
-  "email": "jonathan.doe@example.com",
-  "phoneNumber": "+1-555-0789"
+  "firstName": "Bob",
+  "lastName": "Johnson",
+  "email": "bob.johnson@example.com",
+  "phoneNumber": "+1-555-9999"
 }
 
-### Delete user (ID: 2)
+### 11. Delete User with Valid Token
 DELETE {{baseUrl}}/api/users/2
+Authorization: Bearer {{validToken}}
 
-### Get all users after operations
+### =============================================================
+### EXCEPTION HANDLING TESTS
+### =============================================================
+
+### 12. Test Invalid User ID (Bad Request - 400)
+GET {{baseUrl}}/api/users/0
+Authorization: Bearer {{validToken}}
+
+### 13. Test Get Non-existent User (Not Found - 404)
+GET {{baseUrl}}/api/users/999
+Authorization: Bearer {{validToken}}
+
+### 14. Test Invalid Email Format (Bad Request - 400)
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+Authorization: Bearer {{validToken}}
+
+{
+  "firstName": "Invalid",
+  "lastName": "Email",
+  "email": "not-an-email",
+  "phoneNumber": "+1-555-1234"
+}
+
+### 15. Test Missing Required Field (Bad Request - 400)
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+Authorization: Bearer {{validToken}}
+
+{
+  "firstName": "Missing",
+  "lastName": "Email"
+}
+
+### 16. Test Empty Request Body (Bad Request - 400)
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+Authorization: Bearer {{validToken}}
+
+### 17. Test Duplicate Email (Bad Request - 400)
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+Authorization: Bearer {{validToken}}
+
+{
+  "firstName": "Duplicate",
+  "lastName": "Email",
+  "email": "john.doe@example.com",
+  "phoneNumber": "+1-555-5555"
+}
+
+### =============================================================
+### LOGGING VERIFICATION TESTS
+### =============================================================
+
+### 18. GET Request - Check Logs
 GET {{baseUrl}}/api/users
+Authorization: Bearer {{validToken}}
 
-### Not thread safe
-GET {{baseUrl}}/not-thread-safe
+### 19. POST Request - Check Logs
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+Authorization: Bearer {{validToken}}
+
+{
+  "firstName": "TestUser",
+  "lastName": "Logging",
+  "email": "test.logging@example.com",
+  "phoneNumber": "+1-555-7777"
+}
+
+### 20. Final Verification - Get All Users
+GET {{baseUrl}}/api/users
+Authorization: Bearer {{validToken}}
 
 ### Thread safe
 GET {{baseUrl}}/thread-safe

@@ -79,21 +79,27 @@ namespace Course_Repository.Controllers
             {
                 // Null check
                 if (user == null)
-                    return BadRequest(new { message = "User object cannot be null" });
+                    return BadRequest(new { error = "User object cannot be null" });
 
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
+                {
+                    var errors = ModelState.Values.SelectMany(v => v.Errors)
+                        .Select(e => e.ErrorMessage)
+                        .Where(m => !string.IsNullOrWhiteSpace(m))
+                        .ToList();
+                    return BadRequest(new { error = "Validation failed", details = errors });
+                }
 
                 var (success, createdUser, errorMessage) = await _userService.CreateUserAsync(user);
                 if (!success)
-                    return BadRequest(new { message = errorMessage });
+                    return BadRequest(new { error = "Failed to create user", details = errorMessage });
 
                 return CreatedAtAction(nameof(GetUserById), new { id = createdUser?.Id }, createdUser);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error creating user");
-                return StatusCode(500, new { message = "An error occurred while creating the user", error = ex.Message });
+                return StatusCode(500, new { error = "Internal server error", details = ex.Message });
             }
         }
 
@@ -117,11 +123,17 @@ namespace Course_Repository.Controllers
                     return BadRequest(new { message = "User object cannot be null" });
 
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
+                {
+                    var errors = ModelState.Values.SelectMany(v => v.Errors)
+                        .Select(e => e.ErrorMessage)
+                        .Where(m => !string.IsNullOrWhiteSpace(m))
+                        .ToList();
+                    return BadRequest(new { error = "Validation failed", details = errors });
+                }
 
                 var (success, updatedUser, errorMessage) = await _userService.UpdateUserAsync(id, user);
                 if (!success)
-                    return NotFound(new { message = errorMessage });
+                    return NotFound(new { error = "Failed to update user", details = errorMessage });
 
                 return Ok(updatedUser);
             }
